@@ -1,227 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-ch">
+
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>深入理解强化学习：从原理到应用 | Mtnsea·Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="强化学习，作为机器学习的一个分支，近年来在诸多领域取得了令人瞩目的成果，从打败围棋世界冠军到自动驾驶技术的应用，它的影响力不可小觑。 1. 强化学习简介: 与传统的监督学习不同，强化学习没有给定的答案标签或反馈，而是通过与环境的交互获得反馈。主体（Agent）在环境中执行动作，环境随后给予奖励或惩罚，主体根据这些反馈调整其策略。 2. 基本概念:  策略（Policy）: 定义了在给定状态下应该采">
-<meta property="og:type" content="article">
-<meta property="og:title" content="深入理解强化学习：从原理到应用">
-<meta property="og:url" content="http://example.com/2024/03/07/Your-First-Post/index.html">
-<meta property="og:site_name" content="Mtnsea·Blog">
-<meta property="og:description" content="强化学习，作为机器学习的一个分支，近年来在诸多领域取得了令人瞩目的成果，从打败围棋世界冠军到自动驾驶技术的应用，它的影响力不可小觑。 1. 强化学习简介: 与传统的监督学习不同，强化学习没有给定的答案标签或反馈，而是通过与环境的交互获得反馈。主体（Agent）在环境中执行动作，环境随后给予奖励或惩罚，主体根据这些反馈调整其策略。 2. 基本概念:  策略（Policy）: 定义了在给定状态下应该采">
-<meta property="og:locale">
-<meta property="article:published_time" content="2024-03-07T02:26:56.000Z">
-<meta property="article:modified_time" content="2024-03-07T02:27:29.841Z">
-<meta property="article:author" content="Mtnsea">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Mtnsea·Blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8" />
+  <title>
+    Mtnsea·Blog
+  </title>
+  <meta name="author" content="Mtnsea" />
+  <meta name="description" content="a blog store" />
+  <meta name="keywords" content="blog, hexo" />
+  <link rel="icon" href="/image/code.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link rel="stylesheet" href="/css/main.css" />
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<!-- 开发 -->
+<!--<script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js"></script>-->
+<!-- 生产 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
 <meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Mtnsea·Blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">nothing</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  <div id="app">
+    <transition name="fade">
+      <div id="loading" v-show="loading">
+        <div class="loader">
+  <div>
+    <ul>
+      <li>
+        <svg fill="currentColor" viewBox="0 0 90 120">
+          <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
+        </svg>
+      </li>
+      <li>
+        <svg fill="currentColor" viewBox="0 0 90 120">
+          <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
+        </svg>
+      </li>
+      <li>
+        <svg fill="currentColor" viewBox="0 0 90 120">
+          <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
+        </svg>
+      </li>
+      <li>
+        <svg fill="currentColor" viewBox="0 0 90 120">
+          <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
+        </svg>
+      </li>
+      <li>
+        <svg fill="currentColor" viewBox="0 0 90 120">
+          <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
+        </svg>
+      </li>
+      <li>
+        <svg fill="currentColor" viewBox="0 0 90 120">
+          <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
+        </svg>
+      </li>
+    </ul>
+  </div>
+  <span class="loader-text">Loading...</span>
+</div>
       </div>
-    </div>
+    </transition>
+    <div class="header-container">
+  header
+</div>
+    <div>
+  footer
+</div>
   </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-Your-First-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/03/07/Your-First-Post/" class="article-date">
-  <time class="dt-published" datetime="2024-03-07T02:26:56.000Z" itemprop="datePublished">2024-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      深入理解强化学习：从原理到应用
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>强化学习，作为机器学习的一个分支，近年来在诸多领域取得了令人瞩目的成果，从打败围棋世界冠军到自动驾驶技术的应用，它的影响力不可小觑。</p>
-<p><strong>1. 强化学习简介</strong>:</p>
-<p>与传统的监督学习不同，强化学习没有给定的答案标签或反馈，而是通过与环境的交互获得反馈。主体（Agent）在环境中执行动作，环境随后给予奖励或惩罚，主体根据这些反馈调整其策略。</p>
-<p><strong>2. 基本概念</strong>:</p>
-<ul>
-<li><strong>策略（Policy）</strong>: 定义了在给定状态下应该采取什么动作。</li>
-<li><strong>奖励（Reward）</strong>: 是一个信号，用来告诉主体它的动作是好还是坏。</li>
-<li><strong>值函数（Value Function）</strong>: 估计从当前状态开始未来可以获得的总奖励。</li>
-</ul>
-<p><strong>3. 强化学习的应用</strong>:</p>
-<ul>
-<li><strong>游戏</strong>: AlphaGo 是一个明显的例子，它通过强化学习超越了人类的围棋技能。</li>
-<li><strong>机器人技术</strong>: 强化学习可以教导机器人如何在现实环境中行走或操纵物体。</li>
-<li><strong>金融</strong>: 用于优化交易策略，以最大化长期回报。</li>
-</ul>
-<p><strong>结论</strong>:</p>
-<p>强化学习开辟了机器学习的新领域，带来了许多前所未有的机会和挑战。随着研究的深入和技术的发展，我们可以期待强化学习在未来的应用会更加广泛和深入。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/07/Your-First-Post/" data-id="cltgmgzlp0001ksnp0bv227nv" data-title="深入理解强化学习：从原理到应用" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2024/03/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/03/07/Your-First-Post/">深入理解强化学习：从原理到应用</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/02/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2024 Mtnsea<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
+  <script src="/js/main.js"></script>
 </body>
+
 </html>
