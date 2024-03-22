@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-ch">
 
@@ -13,10 +14,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="/css/main.css" />
 <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-<!-- 开发 -->
-<!--<script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js"></script>-->
-<!-- 生产 -->
+<link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 
 <meta name="generator" content="Hexo 7.1.1"></head>
 
@@ -63,14 +63,77 @@
 </div>
       </div>
     </transition>
-    <div class="header-container">
+    <div id="header-container">
   header
 </div>
     <div>
+  post
+</div>
+    <div id="footer-container">
   footer
 </div>
   </div>
   <script src="/js/main.js"></script>
+  <script>
+  function themeStyle(color = null) {
+    const theme = color ? color : '#F1939C'
+    document.documentElement.style.setProperty(`--color-primary-main`, `${theme}`)
+    for (let i = 1; i <= 9; i++) {
+		  document.documentElement.style.setProperty(`--color-primary-light-${i}`, `${getLightColor(theme, i / 10)}`)
+    }
+    for (let i = 1; i <= 9; i++) {
+      document.documentElement.style.setProperty(`--color-primary-dark-${i}`, `${getDarkColor(theme, i / 10)}`)
+    }
+  }
+
+  function hexToRgb(str) {
+    str = str.replace('#', '')
+    let hexs = str.match(/../g)
+    for (let i = 0; i < 3; i++) {
+      hexs[i] = parseInt(hexs[i], 16)
+    }
+    return hexs
+  }
+
+  function rgbToHex(r, g, b) {
+    let hexs = [r.toString(16), g.toString(16), b.toString(16)]
+    for (let i = 0; i < 3; i++) {
+      if (hexs[i].length == 1) {
+        hexs[i] = `0${hexs[i]}`
+      }
+    }
+    return `#${hexs.join('')}`
+  }
+  function getLightColor(color, level) {
+    let rgb = hexToRgb(color)
+    for (let i = 0; i < 3; i++) {
+      rgb[i] = Math.floor((255 - rgb[i]) * level + rgb[i])
+    }
+    return rgbToHex(rgb[0], rgb[1], rgb[2])
+  }
+
+  function getDarkColor(color, level) {
+    let rgb = hexToRgb(color)
+    for (let i = 0; i < 3; i++) {
+      rgb[i] = Math.floor(rgb[i] * (1 - level))
+    }
+    return rgbToHex(rgb[0], rgb[1], rgb[2])
+  }
+
+  function getWeek() {
+    // const weekIndex = new Date().getDay();
+    const weekIndex = new Date().getSeconds() % 7;
+    const colors = '-#002FA7 -#81D8CF -#003152 -#B05923 -#900021 -#40E0D0 -#FBD26A'.split(' ').map(e => e.slice(1))
+    themeStyle(colors[weekIndex])
+  }
+  
+  
+    getWeek()
+  
+  
+  NProgress.start();
+
+</script>
 </body>
 
 </html>
