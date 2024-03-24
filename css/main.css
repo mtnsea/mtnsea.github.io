@@ -72,7 +72,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 20240312;
+  z-index: 999;
   background: #fff;
   display: flex;
   align-items: center;

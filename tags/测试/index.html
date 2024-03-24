@@ -77,13 +77,27 @@
   <script>
   function themeStyle(color = null) {
     const theme = color ? color : '#F1939C'
-    document.documentElement.style.setProperty(`--color-primary-main`, `${theme}`)
+    var style = document.createElement("style");
+    style.type = "text/css";
+    const styleString = []
+    styleString.push(`--color-primary-main: ${theme};`)
     for (let i = 1; i <= 9; i++) {
-		  document.documentElement.style.setProperty(`--color-primary-light-${i}`, `${getLightColor(theme, i / 10)}`)
+      styleString.push(`--color-primary-light-${i}: ${getLightColor(theme, i / 10)};`)
     }
     for (let i = 1; i <= 9; i++) {
-      document.documentElement.style.setProperty(`--color-primary-dark-${i}`, `${getDarkColor(theme, i / 10)}`)
+      styleString.push(`--color-primary-dark-${i}: ${getDarkColor(theme, i / 10)};`)
     }
+    styleString.unshift(':root {')
+    styleString.push('}')
+   const css = styleString.join('')
+    try {
+        style.appendChild(document.createTextNode(css));
+    } catch(ex) {
+        style.styleSheet.cssText = css;
+    }
+    console.log(css)
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(style);
   }
 
   function hexToRgb(str) {
@@ -104,6 +118,7 @@
     }
     return `#${hexs.join('')}`
   }
+
   function getLightColor(color, level) {
     let rgb = hexToRgb(color)
     for (let i = 0; i < 3; i++) {
@@ -121,10 +136,9 @@
   }
 
   function getWeek() {
-    // const weekIndex = new Date().getDay();
-    const weekIndex = new Date().getSeconds() % 7;
     const colors = '-#002FA7 -#81D8CF -#003152 -#B05923 -#900021 -#40E0D0 -#FBD26A'.split(' ').map(e => e.slice(1))
-    themeStyle(colors[weekIndex])
+    const colorIndex = new Date().getSeconds() % colors.length;
+    themeStyle(colors[colorIndex])
   }
   
   
