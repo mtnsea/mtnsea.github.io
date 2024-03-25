@@ -73,27 +73,27 @@
 </div>
 
 <div class="post">
-    <div class="description">
-        <div class="content" v-pre>
-            doc1
-        </div>
-    </div>
+    <a href="/2024/03/22/doc1/">
+        <div>doc1</div>
+    </a>
 </div>
 
 <div class="post">
-    <div class="description">
-        <div class="content" v-pre>
-            模板标题
-        </div>
-    </div>
+    <a href="/2024/03/25/Webpack/">
+        <div>Webpack</div>
+    </a>
 </div>
 
 <div class="post">
-    <div class="description">
-        <div class="content" v-pre>
-            深入理解强化学习：从原理到应用
-        </div>
-    </div>
+    <a href="/2024/03/22/template/">
+        <div>模板标题</div>
+    </a>
+</div>
+
+<div class="post">
+    <a href="/2024/03/07/Your-First-Post/">
+        <div>深入理解强化学习：从原理到应用</div>
+    </a>
 </div>
 
 
@@ -125,7 +125,6 @@
     } catch(ex) {
         style.styleSheet.cssText = css;
     }
-    console.log(css)
     var head = document.getElementsByTagName('head')[0];
     head.appendChild(style);
   }
@@ -166,7 +165,7 @@
   }
 
   function getWeek() {
-    const colors = '-#002FA7 -#81D8CF -#003152 -#B05923 -#900021 -#40E0D0 -#FBD26A'.split(' ').map(e => e.slice(1))
+    const colors = '#002FA7,#81D8CF,#003152,#B05923,#900021,#40E0D0,#FBD26A'.split(',')
     const colorIndex = new Date().getSeconds() % colors.length;
     themeStyle(colors[colorIndex])
   }

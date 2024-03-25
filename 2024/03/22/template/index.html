@@ -66,8 +66,30 @@
     <div id="header-container">
   header
 </div>
-    <div>
-  post
+    <div class="article">
+  <div>模板标题</div>
+  <div class="info">
+    <div class="date">
+      <span class="icon"><i class="fa-solid fa-calendar fa-fw"></i></span>
+      2024/3/22
+    </div>
+    
+    <div class="tags">
+      <span class="icon"><i class="fa-solid fa-tags fa-fw"></i></span>
+      
+      
+      <div class="tag">
+        
+        <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #40E0D0">测试</a>
+      
+      <div class="tag">
+        
+        <a href="/tags/%E6%A0%87%E7%AD%BE/" style="color: #81D8CF">标签</a>
+      
+      <div>
+    </div>
+    
+  </div>
 </div>
     <div id="footer-container">
   footer
@@ -95,7 +117,6 @@
     } catch(ex) {
         style.styleSheet.cssText = css;
     }
-    console.log(css)
     var head = document.getElementsByTagName('head')[0];
     head.appendChild(style);
   }
@@ -136,7 +157,7 @@
   }
 
   function getWeek() {
-    const colors = '-#002FA7 -#81D8CF -#003152 -#B05923 -#900021 -#40E0D0 -#FBD26A'.split(' ').map(e => e.slice(1))
+    const colors = '#002FA7,#81D8CF,#003152,#B05923,#900021,#40E0D0,#FBD26A'.split(',')
     const colorIndex = new Date().getSeconds() % colors.length;
     themeStyle(colors[colorIndex])
   }

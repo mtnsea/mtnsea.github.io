@@ -8,6 +8,13 @@
 body {
   color: rgba(0, 0, 0, 0.25);
 }
+a {
+  color: var(--color-primary-main);
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.65;
+}
 
 #app {
   width: 100%;
@@ -21,10 +28,6 @@ body {
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
-}
-
-#test-index {
-  height: 100vh;
 }
 
 #nprogress .bar {
@@ -61,11 +64,6 @@ body {
 
 
 
-
-
-
-
-
 #loading {
   position: fixed;
   top: 0;
@@ -81,7 +79,7 @@ body {
 .loader {
   /* opacity: 0; */
   /* --background: linear-gradient(135deg, #23C4F8, #275EFE); */
-  --background: linear-gradient(135deg, var(    --color-primary-light-6), var(--color-primary-main));
+  --background: linear-gradient(135deg, var(--color-primary-light-6), var(--color-primary-main));
   --shadow: var(--color-primary-dark-4);
   --text: #6C7486;
   --page: rgba(255, 255, 255, 0.36);
