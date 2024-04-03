@@ -12,9 +12,10 @@
   <meta name="keywords" content="blog, hexo" />
   <link rel="icon" href="/image/code.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://cdn.bootcdn.net/ajax/libs/reseter.css/2.0.0/reseter.min.css" rel="stylesheet">
 <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css" />
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 
@@ -63,10 +64,55 @@
 </div>
       </div>
     </transition>
-    <div id="header-container">
-  header
+    <header id="header-container"><div id="header">
+  <div id="menu">
+  <nav id="desktop-menu">
+    <a class="title" href="/"><span>MTNSEA·BLOG</span></a>
+    <ul class="nav-ul">
+      
+      <li class="nav-li">
+        <a class="nav-a" href="/">
+          <i class="fa-solid fa-house fa-fw"></i>
+          <span>首页</span>
+        </a>
+      </li>
+      
+      <li class="nav-li">
+        <a class="nav-a" href="/about">
+          <i class="fa-solid fa-id-card fa-fw"></i>
+          <span>关于</span>
+        </a>
+      </li>
+      
+      <li class="nav-li">
+        <a class="nav-a" href="/archives">
+          <i class="fa-solid fa-box-archive fa-fw"></i>
+          <span>归档</span>
+        </a>
+      </li>
+      
+      <li class="nav-li">
+        <a class="nav-a" href="/categories">
+          <i class="fa-solid fa-bookmark fa-fw"></i>
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li class="nav-li">
+        <a class="nav-a" href="/tags">
+          <i class="fa-solid fa-tags fa-fw"></i>
+          <span>标签</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  <nav id="mobile-menu">
+  
+  </nav>
 </div>
-    <div class="article">
+</div></header>
+    <main id="main-container"><div class="article">
   <div>Webpack</div>
   <div class="info">
     <div class="date">
@@ -80,16 +126,16 @@
       
       <div class="tag">
         
-        <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="color: #900021">工程化</a>
+        <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="color: #FBD26A">工程化</a>
       
       <div>
     </div>
     
   </div>
-</div>
-    <div id="footer-container">
+</div></main>
+    <footer id="footer-container"><div id="footer">
   footer
-</div>
+</div></footer>
   </div>
   <script src="/js/main.js"></script>
   <script>
@@ -98,12 +144,12 @@
     var style = document.createElement("style");
     style.type = "text/css";
     const styleString = []
-    styleString.push(`--color-primary-main: ${theme};`)
+    styleString.push(`--color-main: ${theme};`)
     for (let i = 1; i <= 9; i++) {
-      styleString.push(`--color-primary-light-${i}: ${getLightColor(theme, i / 10)};`)
+      styleString.push(`--color-main-light-${i}: ${getLightColor(theme, i / 10)};`)
     }
     for (let i = 1; i <= 9; i++) {
-      styleString.push(`--color-primary-dark-${i}: ${getDarkColor(theme, i / 10)};`)
+      styleString.push(`--color-main-dark-${i}: ${getDarkColor(theme, i / 10)};`)
     }
     styleString.unshift(':root {')
     styleString.push('}')
