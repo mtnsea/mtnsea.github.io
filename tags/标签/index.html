@@ -16,8 +16,11 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/article.css" />
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+<script> const pageMixins = {}; </script>
+
 
 <meta name="generator" content="Hexo 7.1.1"></head>
 
@@ -64,8 +67,7 @@
 </div>
       </div>
     </transition>
-    <header id="header-container"><div id="header">
-  <div id="menu">
+    <div id="menu" :class="{hidden:hiddenMenu, 'menu-color': menuColor}">
   <nav id="desktop-menu">
     <a class="title" href="/"><span>MTNSEA·BLOG</span></a>
     <ul class="nav-ul">
@@ -108,14 +110,211 @@
     </ul>
   </nav>
   <nav id="mobile-menu">
-  
+    <div class="menu-icon">
+      <label class="burger" for="burger">
+        <input type="checkbox" id="burger"  @click.stop="openMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    <a class="title" href="/"><span>MTNSEA·BLOG</span></a>
   </nav>
+  <transition name="fade-in-left">
+    <div class="menu-page" @mousewheel.prevent @touchmove.prevent v-if="showMenuPage">
+      <ul class="nav-ul">
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>首页</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>关于</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>归档</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>分类</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>标签</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </transition>
 </div>
-</div></header>
-    <main id="main-container"><div>
-tag
+    <main id="main"><div id="tags-page">
+  <div class="categories-tags">
+    
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/npm/" style="background: #002FA7">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>npm</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%8F%92%E4%BB%B6/" style="background: #FBD26A">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>插件</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="background: #40E0D0">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>工程化</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E5%88%9B%E5%BB%BA%E6%96%87%E7%AB%A0/" style="background: #81D8CF">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>创建文章</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/doc/" style="background: #40E0D0">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>doc</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%95/" style="background: #81D8CF">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试</span>
+     </a>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%951/" style="background: #81D8CF">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试1</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%952/" style="background: #FBD26A">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试2</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%953/" style="background: #900021">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试3</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%954/" style="background: #81D8CF">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试4</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%955/" style="background: #003152">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试5</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%956/" style="background: #003152">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试6</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%957/" style="background: #40E0D0">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试7</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%958/" style="background: #40E0D0">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试8</span>
+     </a>
+    </div>
+    
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%B5%8B%E8%AF%959/" style="background: #002FA7">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>测试9</span>
+     </a>
+    </div>
+    
+    
+    <div>
+      <a class="tag" href="/tags/%E6%A0%87%E7%AD%BE/">
+        <span class="icon"><i class="fa-solid fa-tag fa-fw"></i></span>
+        <span>标签</span>
+     </a>
+    </div>
+    
+  </div>
 </div></main>
-    <footer id="footer-container"><div id="footer">
+    <footer id="footer"><div id="footer-container">
   footer
 </div></footer>
   </div>
@@ -187,12 +386,13 @@ tag
   }
   
   
-    getWeek()
+    themeStyle()
   
   
   NProgress.start();
 
 </script>
+
 </body>
 
 </html>

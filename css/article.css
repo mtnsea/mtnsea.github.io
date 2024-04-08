@@ -1,0 +1,30 @@
+.post-tags {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.post-tags  .tag {
+  margin-left: 5px;
+}
+
+#tags-page {
+  padding-top: var(--header-height);
+}
+#tags-page .categories-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+#tags-page .categories-tags div {
+  margin: 10px;
+}
+#tags-page .categories-tags a.tag {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+/* .description {} */

@@ -16,8 +16,11 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/article.css" />
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.prod.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+<script> const pageMixins = {}; </script>
+
 
 <meta name="generator" content="Hexo 7.1.1"></head>
 
@@ -64,8 +67,7 @@
 </div>
       </div>
     </transition>
-    <header id="header-container"><div id="header">
-  <div id="menu">
+    <div id="menu" :class="{hidden:hiddenMenu, 'menu-color': menuColor}">
   <nav id="desktop-menu">
     <a class="title" href="/"><span>MTNSEA·BLOG</span></a>
     <ul class="nav-ul">
@@ -108,11 +110,60 @@
     </ul>
   </nav>
   <nav id="mobile-menu">
-  
+    <div class="menu-icon">
+      <label class="burger" for="burger">
+        <input type="checkbox" id="burger"  @click.stop="openMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    <a class="title" href="/"><span>MTNSEA·BLOG</span></a>
   </nav>
+  <transition name="fade-in-left">
+    <div class="menu-page" @mousewheel.prevent @touchmove.prevent v-if="showMenuPage">
+      <ul class="nav-ul">
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>首页</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>关于</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>归档</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>分类</span>
+          </a>
+        </li>
+        
+        <li class="nav-li">
+          <a class="nav-a" href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>标签</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </transition>
 </div>
-</div></header>
-    <main id="main-container"><div class="article">
+    <main id="main"><div class="article">
   <div>深入理解强化学习：从原理到应用</div>
   <div class="info">
     <div class="date">
@@ -122,7 +173,7 @@
     
   </div>
 </div></main>
-    <footer id="footer-container"><div id="footer">
+    <footer id="footer"><div id="footer-container">
   footer
 </div></footer>
   </div>
@@ -194,12 +245,13 @@
   }
   
   
-    getWeek()
+    themeStyle()
   
   
   NProgress.start();
 
 </script>
+
 </body>
 
 </html>
