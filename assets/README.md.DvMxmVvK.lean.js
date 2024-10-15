@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as i,s as a}from"./chunks/framework.7VeGwsXP.js";const u=JSON.parse('{"title":"vitepress-theme","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),o={name:"README.md"},l=a("",4),s=[l];function r(_,n,c,d,h,p){return i(),t("div",null,s)}const f=e(o,[["render",r]]);export{u as __pageData,f as default};

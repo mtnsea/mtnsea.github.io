@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./chunks/framework.Iw7MAUek.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{"categories":true},"headers":[],"relativePath":"categories/index.md","filePath":"categories/index.md"}'),r={name:"categories/index.md"};function o(s,c,n,i,d,p){return a(),t("div")}const f=e(r,[["render",o]]);export{m as __pageData,f as default};
